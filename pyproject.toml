@@ -1,0 +1,20 @@
+[project]
+name = "py-dataengineering-workshop"
+version = "0.1.0"
+description = "Northwind -> Raw/Clean/Model in pure Python, then Streamlit dashboard"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+  "pandas",
+  "pyarrow",
+  "streamlit"
+]
+
+[project.scripts]
+etl = "etl.run:main"
+etl-extract = "etl.run:run_extract"
+etl-load = "etl.run:run_load"
+etl-transform = "etl.run:run_transform"
+etl-build = "etl.run:run_build"
+
+[tool.uv]

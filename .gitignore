@@ -1,0 +1,10 @@
+.venv/
+__pycache__/
+*.pyc
+*.DS_Store
+uv.lock
+.streamlit/
+
+# Workshop outputs (you can remove these lines if you want to commit results)
+data/silver/
+data/gold/

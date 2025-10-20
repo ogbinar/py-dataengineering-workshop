@@ -152,7 +152,7 @@ Each layer is self-contained, readable, and directly runnable.
 
 ## 🧾 License
 
-MIT © 2025 YOUR NAME / Data Engineering Pilipinas
+MIT © 2025 Myk Ogbinar / Data Engineering Pilipinas
 
 ---
 
@@ -165,5 +165,4 @@ MIT © 2025 YOUR NAME / Data Engineering Pilipinas
 * [PyCon Davao 2025](https://pycon-davao.durianpy.org/)
 * [Data Engineering Pilipinas](https://dataengineering.ph/)
 
-```
 

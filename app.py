@@ -7,7 +7,7 @@ CLEAN = Path("data/01-clean")
 DQDIR = CLEAN / "_dq"
 
 st.set_page_config(page_title="Py Data Engineering — Northwind", layout="wide")
-st.title("🏪 Northwind — pandas + pyarrow + Streamlit (uv)")
+st.title("🏪 Northwind — Py Dashboard")
 
 tab_sales, tab_country, tab_dq = st.tabs(["📊 Sales (Customers)", "🌍 Sales by Country", "🧪 Data Quality"])
 

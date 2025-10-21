@@ -2,10 +2,30 @@
 
 **From CSV to Dashboard — Building a Mini Data Pipeline in Pure Python**
 
-This workshop demonstrates how to build a full **data engineering workflow** using only open-source tools:  
+This workshop shows how to build a complete **data engineering workflow** using open-source tools:  
 `pandas • pyarrow • uv • streamlit`.
 
-You’ll ingest, clean, model, and visualize the classic **Northwind** dataset — all locally, no cloud or database required.
+You’ll ingest, clean, model, and visualize the classic **Northwind** dataset — all locally, with no cloud or database setup.
+
+---
+
+## 🧭 What This Repo *Is* — and *Isn’t*
+
+### ✅ What It *Is*
+- A **hands-on sandbox** for learning how data engineers think and structure pipelines.  
+- A **mini data warehouse** built entirely with open-source tools.  
+- A practical example of the modern data-engineering mindset:  
+  **Extract → Load → Transform → Build → Visualize.**  
+- Designed for:
+  - Beginners exploring data pipelines and analytics engineering.  
+  - Educators or mentors leading workshops and bootcamps.  
+  - Teams wanting a lightweight demo of ETL + Data Quality in Python.
+
+### 🚫 What It *Isn’t*
+- ❌ Not a production-grade data platform or big-data tool.  
+- ❌ Not a replacement for Airflow, dbt, or Spark.  
+- ❌ Not built for parallel or distributed execution.  
+- ❌ Not a full data-engineering curriculum — this is the *first step*.
 
 ---
 
@@ -14,139 +34,140 @@ You’ll ingest, clean, model, and visualize the classic **Northwind** dataset �
 ```
 
 py-dataengineering-workshop/
-├─ README.md
-├─ pyproject.toml
-├─ .gitignore
 ├─ data/
-│  ├─ 00-raw/         # raw source CSVs (downloaded automatically)
-│  ├─ 01-clean/       # cleaned + validated Parquet data
-│  │  └─ _dq/         # data quality logs
-│  ├─ 02-model/       # modeled & aggregated Parquet tables
-│  └─ 03-sandbox/     # optional scratch area
+│  ├─ 00-raw/       # raw source CSVs (auto-downloaded)
+│  ├─ 01-clean/     # cleaned + validated Parquet
+│  │  └─ _dq/       # data quality logs
+│  ├─ 02-model/     # modeled & aggregated tables
+│  └─ 03-sandbox/   # scratch area
 ├─ etl/
-│  ├─ extract.py      # downloads + reads raw CSVs
-│  ├─ load.py         # cleans data + runs DQ checks
-│  ├─ transform.py    # creates modeled tables (fact/dim)
-│  ├─ build.py        # aggregates & writes gold layer
-│  ├─ dq.py           # reusable DQ rules + logging
-│  ├─ paths.py        # centralized folder definitions
-│  └─ run.py          # stage orchestrator (CLI)
-└─ app.py             # Streamlit dashboard
+│  ├─ extract.py    # download + read CSVs
+│  ├─ load.py       # clean + validate
+│  ├─ transform.py  # create fact/dim tables
+│  ├─ build.py      # aggregate to gold layer
+│  ├─ dq.py         # data-quality rules + logs
+│  ├─ paths.py      # central folder definitions
+│  └─ run.py        # orchestrator (CLI)
+└─ app.py           # Streamlit dashboard
 
 ````
 
 ---
 
-## 🧰 Requirements
-
-- Python ≥ 3.10  
-- [uv](https://github.com/astral-sh/uv) (modern fast package/environment manager)  
-- Internet connection (for first-time Northwind CSV download)
-
----
-
-## ⚙️ Setup
+## ⚙️ Quickstart
 
 ```bash
-# 1. Clone this repo
 git clone https://github.com/YOURNAME/py-dataengineering-workshop.git
 cd py-dataengineering-workshop
-
-# 2. Create environment + install deps
 uv venv && uv sync
 
-# 3. (Optional) fetch data manually
-uv run python -m etl.extract
-
-# 4. Run the entire pipeline
+# Run the full pipeline
 uv run python -m etl.run
+
+# Or run by stage
+uv run python -m etl.run --stage extract
+uv run python -m etl.run --stage load
+uv run python -m etl.run --stage transform
+uv run python -m etl.run --stage build
+
+# Launch the dashboard
+uv run streamlit run app.py
 ````
 
-On first run, the `extract` stage will automatically download:
-
-```
-Customers.csv, Orders.csv, Order_Details.csv, Products.csv
-```
-
-and store them in `data/00-raw/`.
+On first run, `extract.py` downloads the Northwind CSVs into `data/00-raw/`.
 
 ---
 
 ## 🧩 Pipeline Overview
 
-| Stage         | Script             | Purpose                                                       |
-| ------------- | ------------------ | ------------------------------------------------------------- |
-| **Extract**   | `etl/extract.py`   | Download + load raw CSVs into memory                          |
-| **Load**      | `etl/load.py`      | Clean data, standardize columns, and log data-quality issues  |
-| **Transform** | `etl/transform.py` | Create fact/dimension tables                                  |
-| **Build**     | `etl/build.py`     | Aggregate to gold layer (sales by customer, country, product) |
+| Stage         | Script             | Purpose                                                   |
+| ------------- | ------------------ | --------------------------------------------------------- |
+| **Extract**   | `etl/extract.py`   | Download + load raw CSVs                                  |
+| **Load**      | `etl/load.py`      | Clean, standardize, and log data-quality issues           |
+| **Transform** | `etl/transform.py` | Create fact and dimension tables                          |
+| **Build**     | `etl/build.py`     | Aggregate gold-layer outputs (customer, country, product) |
 
-Run any stage individually:
-
-```bash
-uv run python -m etl.run --stage extract
-uv run python -m etl.run --stage load
-uv run python -m etl.run --stage transform
-uv run python -m etl.run --stage build
-```
-
----
-
-## 🧪 Data Quality
-
-All validation results are stored in:
+Data-quality results are saved under:
 
 ```
 data/01-clean/_dq/
-├─ dq_runs.parquet    # summary of each run
-└─ dq_issues.parquet  # detailed issue list
+├─ dq_runs.parquet
+└─ dq_issues.parquet
+```
+---
+Here’s a concise, well-formatted **README snippet** you can drop right under your “Usage” or “Utilities” section:
+
+---
+
+### 🧰 Quick Parquet Viewer
+
+You can quickly inspect any Parquet file generated by the ETL pipeline using `pandas + pyarrow`.
+
+```bash
+uv run python view_data.py
 ```
 
-Rules include:
+This utility prints:
 
-* Non-null & positive IDs
-* Valid price, quantity, discount ranges
-* Foreign-key consistency (Orders ↔ Customers)
+* 📂 The file being read
+* 👀 A preview of the first 5 rows (`head()`)
+* 🧾 Schema and data types (`info()`)
+* 📊 Summary statistics (`describe()`)
+
+To view another file, edit the `target` path inside `view_data.py`
+(e.g., switch from `sales_by_customer.parquet` to `fact_sales.parquet`).
+
 
 ---
 
 ## 📊 Streamlit Dashboard
 
-After running the pipeline:
-
 ```bash
 uv run streamlit run app.py
 ```
 
-Then open [http://localhost:8501](http://localhost:8501).
+Open [http://localhost:8501](http://localhost:8501)
 
-**Tabs:**
+**Tabs**
 
 1. 📊 **Sales (Customers)** – Top customers & products
-2. 🌍 **Sales by Country** – Aggregated view by region
-3. 🧪 **Data Quality** – Latest DQ run and issue details
+2. 🌍 **Sales by Country** – Regional aggregates
+3. 🧪 **Data Quality** – Run summaries & issue details
+
+---
+## 🌻 Challenge Yourself!
+
+1. Study the [Northwind dataset](https://en.wikiversity.org/wiki/Database_Examples/Northwind).
+2. Modify `extract.py` to ingest all available Northwind CSVs (Employees, Shippers, Suppliers, Categories, etc.).
+3. Add new data-quality checks in `dq.py` (e.g., missing employee names, invalid postal codes).
+4. Extend `transform.py` to include `dim_product`, `dim_supplier`, and `fact_orders`.
+5. Enhance `build.py` with new aggregates (e.g., sales by category, supplier, year).
+6. Visualize additional metrics in Streamlit (e.g., monthly trends, top-selling categories).
+7. Use another dataset (like, [Chinook](https://www.sqlitetutorial.net/sqlite-sample-database/)) and create and test it through the pipeline.
 
 ---
 
-## 🧱 Teaching Flow
+## 🌱 From Demo → Real-World Data Stack
 
-This repo is structured for live code-along sessions:
-
-1. **Inspect raw CSVs** → `extract.py`
-2. **Clean & validate** → `load.py`
-3. **Model & aggregate** → `transform.py` + `build.py`
-4. **Visualize** → `app.py` (Streamlit)
-
-Each layer is self-contained, readable, and directly runnable.
+| Stage                 | What it does                     | Recommended tools & patterns                                                                  |
+| --------------------- | -------------------------------- | --------------------------------------------------------------------------------------------- |
+| **Extract**           | Pull data from CSV/API/DB/stream | **dlt** (Python) → sources (CSV, REST, DB). For streams: **Kafka** (later).                   |
+| **Load**              | Land raw/staging into warehouse  | **dlt → Postgres** (Dockerized). For dev-only: optionally DuckDB parquet.                     |
+| **Transform**         | Create clean staging + marts     | **dbt** (SQL or Python models) over Postgres; incremental models for scale.                   |
+| **Store**             | Persist analytical outputs       | **Postgres** (marts schemas), optional **Parquet** in `/02-model` for ad hoc.                 |
+| **Serve**             | BI / apps / ad-hoc queries       | **Streamlit** app; **Metabase** (Docker) for dashboards; programmatic **Ibis/DuckDB**.        |
+| **Orchestrate**       | Schedule & chain runs            | **Prefect** (flows locally or Cloud). For simple prod cron: **crontab** + shell.              |
+| **Validate / DQ**     | Schemas, ranges, FKs             | **Pandera** (Python), selective **Great Expectations**; **dbt tests** (`not_null`, `unique`). |
+| **Observe**           | Runs, metrics, alerts            | dlt run metrics + Prefect run states; ship DQ summaries to **Grafana/Metabase/Slack**.        |
+| **Version & Lineage** | Repro, history, docs             | **git** for code, optional **dvc** for large artifacts; **dbt docs + lineage**.               |
+| **Semantic Layer**    | Uniform query interface          | **Ibis** to query Postgres/Parquet with one API; (optional) **dbt metrics**.                  |
+| **ML / Features**     | Gold → features                  | Notebook lab or **feature store** later; start with **pandas/Polars** over marts.             |
 
 ---
 
-## 💡 Extensions
+## 💡 In One Line
 
-* Replace Northwind with your own dataset
-* Add new DQ rules in `dq.py`
-* Create extra dashboards (e.g., by category or year)
-* Swap pandas → Polars or DuckDB to compare performance
+> A **teachable microcosm** of modern data engineering — small enough for your laptop, structured enough to mirror real-world pipelines.
 
 ---
 
@@ -161,10 +182,10 @@ MIT © 2025 Myk Ogbinar / Data Engineering Pilipinas
 * [Neo4j Northwind Dataset](https://github.com/neo4j-contrib/northwind-neo4j)
 * [pandas](https://pandas.pydata.org/)
 * [pyarrow](https://arrow.apache.org/docs/python/)
-* [Streamlit](https://streamlit.io/)
+* [streamlit](https://streamlit.io/)
 * [uv](https://github.com/astral-sh/uv)
-* [DurianPy](https://durianpy.org/)
-* [PyCon Davao 2025](https://pycon-davao.durianpy.org/)
+* [dlthub](https://dlthub.com/) • [dbt](https://www.getdbt.com/) • [DuckDB](https://duckdb.org/)
+* [Ibis](https://ibis-project.org/) • [ClickHouse](https://clickhouse.com/)
+* [DurianPy](https://durianpy.org/) • [PyCon Davao 2025](https://pycon-davao.durianpy.org/)
 * [Data Engineering Pilipinas](https://dataengineering.ph/)
-
 

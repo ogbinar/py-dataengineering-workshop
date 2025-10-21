@@ -27,6 +27,10 @@ You’ll ingest, clean, model, and visualize the classic **Northwind** dataset �
 - ❌ Not built for parallel or distributed execution.  
 - ❌ Not a full data-engineering curriculum — this is the *first step*.
 
+## 💡 In One Line
+
+> A **teachable microcosm** of modern data engineering — small enough for your laptop, structured enough to mirror real-world pipelines.
+
 ---
 
 ## 📦 Project Structure
@@ -48,6 +52,7 @@ py-dataengineering-workshop/
 │  ├─ dq.py         # data-quality rules + logs
 │  ├─ paths.py      # central folder definitions
 │  └─ run.py        # orchestrator (CLI)
+└─ view_data.py     # Inspect parquet data files
 └─ app.py           # Streamlit dashboard
 
 ````
@@ -94,9 +99,6 @@ data/01-clean/_dq/
 ├─ dq_runs.parquet
 └─ dq_issues.parquet
 ```
----
-Here’s a concise, well-formatted **README snippet** you can drop right under your “Usage” or “Utilities” section:
-
 ---
 
 ### 🧰 Quick Parquet Viewer
@@ -163,13 +165,10 @@ Open [http://localhost:8501](http://localhost:8501)
 | **Semantic Layer**    | Uniform query interface          | **Ibis** to query Postgres/Parquet with one API; (optional) **dbt metrics**.                  |
 | **ML / Features**     | Gold → features                  | Notebook lab or **feature store** later; start with **pandas/Polars** over marts.             |
 
----
-
-## 💡 In One Line
-
-> A **teachable microcosm** of modern data engineering — small enough for your laptop, structured enough to mirror real-world pipelines.
+Explore these tools to build a deeper appreciation for how Data Engineering scales—experiment with various data sources and implement your own end-to-end projects.
 
 ---
+
 
 ## 🧾 License
 
@@ -179,13 +178,12 @@ MIT © 2025 Myk Ogbinar / Data Engineering Pilipinas
 
 ## 🙌 Acknowledgments
 
-* [Neo4j Northwind Dataset](https://github.com/neo4j-contrib/northwind-neo4j)
-* [pandas](https://pandas.pydata.org/)
-* [pyarrow](https://arrow.apache.org/docs/python/)
-* [streamlit](https://streamlit.io/)
-* [uv](https://github.com/astral-sh/uv)
-* [dlthub](https://dlthub.com/) • [dbt](https://www.getdbt.com/) • [DuckDB](https://duckdb.org/)
-* [Ibis](https://ibis-project.org/) • [ClickHouse](https://clickhouse.com/)
-* [DurianPy](https://durianpy.org/) • [PyCon Davao 2025](https://pycon-davao.durianpy.org/)
-* [Data Engineering Pilipinas](https://dataengineering.ph/)
+* [Neo4j Northwind Dataset](https://github.com/neo4j-contrib/northwind-neo4j) — Sample dataset used for this project
+* [pandas](https://pandas.pydata.org/) • [pyarrow](https://arrow.apache.org/docs/python/) — Core data processing and Parquet handling
+* [streamlit](https://streamlit.io/) — Interactive data app framework
+* [uv](https://github.com/astral-sh/uv) — Fast Python environment and dependency manager
+* [dltHub](https://dlthub.com/) • [dbt](https://www.getdbt.com/) • [DuckDB](https://duckdb.org/) — Modern ELT and analytical data stack components
+* [Ibis](https://ibis-project.org/) • [ClickHouse](https://clickhouse.com/) — Unified analytical querying and columnar storage engines
+* [DurianPy](https://durianpy.org/) • [PyCon Davao 2025](https://pycon-davao.durianpy.org/) — Community and conference initiatives supporting open-source learning
+* [Data Engineering Pilipinas](https://dataengineering.ph/) — Open-source community promoting data literacy and collaboration in the Philippines
 

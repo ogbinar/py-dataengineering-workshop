@@ -1,10 +1,85 @@
-.venv/
+# ─────────────────────────────────────────────────────────────
+# PYTHON & BUILD FILES
+# ─────────────────────────────────────────────────────────────
 __pycache__/
-*.pyc
-*.DS_Store
-uv.lock
-.streamlit/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+*.manifest
+*.spec
 
-# Workshop outputs (you can remove these lines if you want to commit results)
-data/silver/
-data/gold/
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+*.env
+
+# uv & pip artifacts
+uv.lock
+pip-wheel-metadata/
+*.whl
+
+# ─────────────────────────────────────────────────────────────
+# DATA & PIPELINE OUTPUTS
+# ─────────────────────────────────────────────────────────────
+# Raw and processed data directories — reproducible, not versioned
+data/00-raw/
+data/01-clean/
+data/02-model/
+data/03-sandbox/
+
+# Optional: keep the directory structure but not contents
+!data/.gitkeep
+# Keep empty data folders for structure
+!data/**/.gitkeep
+
+
+# ─────────────────────────────────────────────────────────────
+# NOTEBOOKS & TEMPORARY FILES
+# ─────────────────────────────────────────────────────────────
+.ipynb_checkpoints/
+*.ipynb~
+*.bak
+*.tmp
+*.log
+.DS_Store
+
+# ─────────────────────────────────────────────────────────────
+# IDE & OS METADATA
+# ─────────────────────────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+Thumbs.db
+desktop.ini
+
+# ─────────────────────────────────────────────────────────────
+# STREAMLIT & APP RUNTIME FILES
+# ─────────────────────────────────────────────────────────────
+# Streamlit generates cached UI and data folders
+.streamlit/
+**/.streamlit/
+
+# ─────────────────────────────────────────────────────────────
+# PROJECT-SPECIFIC EXCLUSIONS
+# ─────────────────────────────────────────────────────────────
+# Parquet and intermediate model outputs (recreated by pipeline)
+*.parquet
+*.csv
+*.xlsx
+*.json
+
+# Logs and DQ output
+data/01-clean/_dq/
+
+# Sandbox, temporary exports, and scratch work
+data/03-sandbox/*
+tmp/
+cache/

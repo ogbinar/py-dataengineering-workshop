@@ -1,6 +1,7 @@
 # ─────────────────────────────────────────────────────────────
 # PYTHON & BUILD FILES
-# ─────────────────────────────────────────────────────────────
+# 
+
 __pycache__/
 *.py[cod]
 *.pyo
@@ -13,6 +14,8 @@ build/
 .eggs/
 *.manifest
 *.spec
+# Keep empty data folders for structure
+!data/**/.gitkeep
 
 # Virtual environments
 .venv/
@@ -37,8 +40,7 @@ data/03-sandbox/
 
 # Optional: keep the directory structure but not contents
 !data/.gitkeep
-# Keep empty data folders for structure
-!data/**/.gitkeep
+
 
 
 # ─────────────────────────────────────────────────────────────

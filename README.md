@@ -160,7 +160,9 @@ MIT © 2025 Myk Ogbinar / Data Engineering Pilipinas
 
 * [Neo4j Northwind Dataset](https://github.com/neo4j-contrib/northwind-neo4j)
 * [pandas](https://pandas.pydata.org/)
+* [pyarrow](https://arrow.apache.org/docs/python/)
 * [Streamlit](https://streamlit.io/)
+* [uv](https://github.com/astral-sh/uv)
 * [DurianPy](https://durianpy.org/)
 * [PyCon Davao 2025](https://pycon-davao.durianpy.org/)
 * [Data Engineering Pilipinas](https://dataengineering.ph/)

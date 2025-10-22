@@ -5,9 +5,14 @@ description = "Northwind -> Raw/Clean/Model in pure Python, then Streamlit dashb
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
+  "air>=0.30.0",
+  "fastapi[standard]>=0.119.1",
+  "matplotlib>=3.10.7",
   "pandas",
+  "plotly>=6.3.1",
   "pyarrow",
-  "streamlit"
+  "seaborn>=0.13.2",
+  "streamlit",
 ]
 
 [project.scripts]

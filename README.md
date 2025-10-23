@@ -1,5 +1,4 @@
 # 🧠 Py-DataEngineering Workshop
-
 **From CSV to Dashboard — Building a Mini Data Pipeline in Pure Python**
 
 This workshop shows how to build a complete **data engineering workflow** using open-source tools:  
@@ -62,7 +61,7 @@ py-dataengineering-workshop/
 ## ⚙️ Quickstart
 
 ```bash
-git clone https://github.com/YOURNAME/py-dataengineering-workshop.git
+git clone https://github.com/ogbinar/py-dataengineering-workshop.git
 cd py-dataengineering-workshop
 uv venv && uv sync
 
@@ -80,6 +79,21 @@ uv run streamlit run app.py
 ````
 
 On first run, `extract.py` downloads the Northwind CSVs into `data/00-raw/`.
+
+---
+
+## 👍 Alternative Setup
+
+You may also run the code inside a dev container using Docker and VS Code. This can simplify setup by providing a consistent environment. Quick steps:
+
+1. Install the "Dev Containers" (a.k.a. Remote - Containers) extension in VS Code.
+2. Open this project folder in VS Code (File → Open Folder...).
+3. Open the command palette (F1 or Ctrl+Shift+P) and choose: "Dev Containers: Reopen in Container".
+
+Notes:
+- On the first run VS Code will build the container image using `devcontainer.json`. This may take several minutes depending on your network and machine.
+- After the container starts you can run the pipeline and the Streamlit app from the container terminal (the same commands shown in the Quickstart work inside the container).
+- If you don't have Docker or prefer a local virtualenv, the earlier Quickstart steps (using `uv`) will work without the dev container.
 
 ---
 
@@ -135,6 +149,13 @@ Open [http://localhost:8501](http://localhost:8501)
 1. 📊 **Sales (Customers)** – Top customers & products
 2. 🌍 **Sales by Country** – Regional aggregates
 3. 🧪 **Data Quality** – Run summaries & issue details
+
+---
+
+## 🤖 Workshop Proper
+
+- Workshop instructions can be found [here](WORKSHOP_GUIDE.md).
+- Lecture slides can be found [here](lecture.pdf).
 
 ---
 ## 🌻 Challenge Yourself!
@@ -200,4 +221,3 @@ MIT © 2025 Myk Ogbinar / Data Engineering Pilipinas
 * [Ibis](https://ibis-project.org/) • [ClickHouse](https://clickhouse.com/) — Unified analytical querying and columnar storage engines
 * [DurianPy](https://durianpy.org/) • [PyCon Davao 2025](https://pycon-davao.durianpy.org/) — Community and conference initiatives supporting open-source learning
 * [Data Engineering Pilipinas](https://dataengineering.ph/) — Open-source community promoting data literacy and collaboration in the Philippines
-

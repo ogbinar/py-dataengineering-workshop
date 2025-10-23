@@ -1,9 +1,5 @@
 # 🧠 Py-DataEngineering Workshop
 
-**From CSV to Dashboard — Building a Mini Data Pipeline in Pure Python**
-
-This workshop shows how to build a complete **data engineering workflow** using open-source tools:  
-`pandas • pyarrow • uv • streamlit`.
 
 You’ll ingest, clean, model, and visualize the classic **Northwind** dataset — all locally, with no cloud or database setup.
 
@@ -80,6 +76,21 @@ uv run streamlit run app.py
 ````
 
 On first run, `extract.py` downloads the Northwind CSVs into `data/00-raw/`.
+
+---
+
+## 👍 Alternative Setup
+
+You may also run the code inside a dev container using Docker and VS Code. This can simplify setup by providing a consistent environment. Quick steps:
+
+1. Install the "Dev Containers" (a.k.a. Remote - Containers) extension in VS Code.
+2. Open this project folder in VS Code (File → Open Folder...).
+3. Open the command palette (F1 or Ctrl+Shift+P) and choose: "Dev Containers: Reopen in Container".
+
+Notes:
+- On the first run VS Code will build the container image using `devcontainer.json`. This may take several minutes depending on your network and machine.
+- After the container starts you can run the pipeline and the Streamlit app from the container terminal (the same commands shown in the Quickstart work inside the container).
+- If you don't have Docker or prefer a local virtualenv, the earlier Quickstart steps (using `uv`) will work without the dev container.
 
 ---
 

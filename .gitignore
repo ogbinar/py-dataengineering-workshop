@@ -85,3 +85,6 @@ data/01-clean/_dq/
 data/03-sandbox/*
 tmp/
 cache/
+
+# Exclude devcontainer.json
+!devcontainer.json

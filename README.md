@@ -146,6 +146,20 @@ Open [http://localhost:8501](http://localhost:8501)
 5. Enhance `build.py` with new aggregates (e.g., sales by category, supplier, year).
 6. Visualize additional metrics in Streamlit (e.g., monthly trends, top-selling categories).
 7. Use another dataset (like, [Chinook](https://www.sqlitetutorial.net/sqlite-sample-database/)) and create and test it through the pipeline.
+8. Grow beyond Streamlit and try another web framework like [Air](http://feldroy.github.io/air/).
+
+---
+
+### 🪶 Air Dashboard (Streamlit Expansion)
+
+This app reimagines the original **Streamlit Northwind Dashboard** using **Air**, a FastAPI-based web framework.
+Air expands on Streamlit by enabling fully web-native dashboards—mixing HTML, APIs, and charts in one lightweight Python app.
+
+Run locally with:
+
+```bash
+uv run uvicorn air_app:app --reload
+```
 
 ---
 

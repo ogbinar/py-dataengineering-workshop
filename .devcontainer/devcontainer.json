@@ -1,0 +1,22 @@
+{
+    "name": "py311-uv",
+    "build": { "dockerfile": "Dockerfile" },
+  
+    "containerEnv": {
+      "UV_SYSTEM_PYTHON": "1"
+    },
+  
+    "postCreateCommand": "uv venv && uv sync",
+  
+    "customizations": {
+      "vscode": {
+        "extensions": [
+          "ms-python.python",
+          "ms-toolsai.jupyter",
+          "ms-azuretools.vscode-docker"
+        ]
+      }
+    },
+  
+    "remoteUser": "vscode"
+}

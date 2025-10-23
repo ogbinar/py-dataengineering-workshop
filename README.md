@@ -1,5 +1,8 @@
 # 🧠 Py-DataEngineering Workshop
+**From CSV to Dashboard — Building a Mini Data Pipeline in Pure Python**
 
+This workshop shows how to build a complete **data engineering workflow** using open-source tools:  
+`pandas • pyarrow • uv • streamlit`.
 
 You’ll ingest, clean, model, and visualize the classic **Northwind** dataset — all locally, with no cloud or database setup.
 

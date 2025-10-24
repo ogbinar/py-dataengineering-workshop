@@ -86,9 +86,13 @@ On first run, `extract.py` downloads the Northwind CSVs into `data/00-raw/`.
 
 You may also run the code inside a dev container using Docker and VS Code. This can simplify setup by providing a consistent environment. Quick steps:
 
-1. Install the "Dev Containers" (a.k.a. Remote - Containers) extension in VS Code.
+1. Install the "Dev Containers" extension in VS Code.
+![Install Dev Containers Extension](./docs/1_install_dev_container.png)
 2. Open this project folder in VS Code (File → Open Folder...).
-3. Open the command palette (F1 or Ctrl+Shift+P) and choose: "Dev Containers: Reopen in Container".
+3. Open the command palette (F1 or Ctrl+Shift+P or Cmd+Shift+P) and choose: "Dev Containers: Reopen in Container".
+![Reopen in Dev Container](./docs/2_open_project_in_container.png)
+4. The container should start building. Wait for it to finish.
+![Container Building](./docs/3_building_container.png)
 
 Notes:
 - On the first run VS Code will build the container image using `devcontainer.json`. This may take several minutes depending on your network and machine.
